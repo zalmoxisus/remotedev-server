@@ -11,6 +11,18 @@ npm install --save-dev remotedev-server
 
 ### Usage
 
+Add in your app's `package.json`:
+
+```
+"scripts": {
+  "remotedev": "remotedev --hostname=localhost --port=8000"
+}
+```
+
+So, you can start local server by running `npm run remotedev`.
+
+If you install the package globally (not recommended) just run:
+
 ```
 remotedev --hostname=localhost --port=8000
 ```
