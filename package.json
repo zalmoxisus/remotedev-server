@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/zalmoxisus/remotedev-server",
   "dependencies": {
+    "express": "^4.13.3",
     "minimist": "^1.2.0",
     "socketcluster": "^3.0.0"
   }

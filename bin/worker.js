@@ -1,5 +1,12 @@
+var express = require('express');
+
 module.exports.run = function(worker) {
+  var app = require('express')();
+  var httpServer = worker.httpServer;
   var scServer = worker.scServer;
+
+  httpServer.on('request', app);
+  app.use('/', require('./router'));
 
   scServer.addMiddleware(scServer.MIDDLEWARE_EMIT, function (socket, channel, data, next) {
     if (channel.substr(0, 3) === 'sc-' || channel === 'respond' || channel === 'log') {
