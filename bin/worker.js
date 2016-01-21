@@ -6,7 +6,11 @@ module.exports.run = function(worker) {
   var scServer = worker.scServer;
 
   httpServer.on('request', app);
-  app.use('/', require('./router'));
+  app.get('/', function(req, res) {
+    res.send('<html><body>' +
+      '<p>It works! Now point your app and monitor app to connect to this server.</p>' +
+      '</body></html>');
+  });
 
   scServer.addMiddleware(scServer.MIDDLEWARE_EMIT, function (socket, channel, data, next) {
     if (channel.substr(0, 3) === 'sc-' || channel === 'respond' || channel === 'log') {
