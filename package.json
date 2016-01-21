@@ -1,0 +1,29 @@
+{
+  "name": "remotedev-server",
+  "version": "0.0.1",
+  "description": "Run remotedev monitor on your local server.",
+  "bin": {
+    "remotedev": "bin/remotedev.js"
+  },
+  "files": [
+    "bin"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zalmoxisus/remotedev-server.git"
+  },
+  "keywords": [
+    "devtools",
+    "remotedev"
+  ],
+  "author": "Mihail Diordiev <zalmoxisus@gmail.com> (https://github.com/zalmoxisus)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zalmoxisus/remotedev-server/issues"
+  },
+  "homepage": "https://github.com/zalmoxisus/remotedev-server",
+  "dependencies": {
+    "minimist": "^1.2.0",
+    "socketcluster": "^3.0.0"
+  }
+}
