@@ -11,6 +11,11 @@ module.exports.run = function(worker) {
       '<p>It works! Now point your app and monitor app to connect to this server.</p>' +
       '</body></html>');
   });
+  app.post('/', function(req, res) {
+    if (!req.body.data) return res.status(404).end();
+    scServer.exchange.publish('log', req.body.data);
+    res.send('OK');
+  });
 
   scServer.addMiddleware(scServer.MIDDLEWARE_EMIT, function (socket, channel, data, next) {
     if (channel.substr(0, 3) === 'sc-' || channel === 'respond' || channel === 'log') {
