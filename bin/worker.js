@@ -17,11 +17,13 @@ module.exports.run = function(worker) {
     res.send('OK');
   });
 
-  scServer.addMiddleware(scServer.MIDDLEWARE_EMIT, function (socket, channel, data, next) {
+  scServer.addMiddleware(scServer.MIDDLEWARE_EMIT, function (req, next) {
+    var channel = req.event;
+    var data = req.data;
     if (channel.substr(0, 3) === 'sc-' || channel === 'respond' || channel === 'log') {
       scServer.exchange.publish(channel, data);
     } else if (channel === 'log-noid') {
-      scServer.exchange.publish('log', { id: socket.id, data: data });
+      scServer.exchange.publish('log', { id: req.socket.id, data: data });
     }
     next();
   });
