@@ -1,3 +1,4 @@
+var path = require('path');
 var express = require('express');
 
 module.exports.run = function(worker) {
@@ -7,9 +8,7 @@ module.exports.run = function(worker) {
 
   httpServer.on('request', app);
   app.get('/', function(req, res) {
-    res.send('<html><body>' +
-      '<p>It works! Now point your app and monitor app to connect to this server.</p>' +
-      '</body></html>');
+    res.sendFile(path.join(__dirname, 'index.html'));
   });
   app.post('/', function(req, res) {
     if (!req.body.data) return res.status(404).end();
