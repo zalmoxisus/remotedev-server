@@ -7,8 +7,10 @@ module.exports.run = function(worker) {
   var scServer = worker.scServer;
 
   httpServer.on('request', app);
+
+  app.set('view engine', 'ejs');
   app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.render('index', { port: worker.options.port });
   });
   app.post('/', function(req, res) {
     if (!req.body.data) return res.status(404).end();

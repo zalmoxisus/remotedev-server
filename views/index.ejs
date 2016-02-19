@@ -30,16 +30,14 @@
     <script src="//npmcdn.com/react-dom@0.14/dist/react-dom.min.js"></script>
     <script src="//npmcdn.com/remotedev-app@0.2/dist/remotedev-app.min.js"></script>
     <script>
-      var socketOptions = {
+      window.remotedevOptions = {
         hostname: location.hostname,
+        port: <%= port %>,
         autoReconnect: true
       };
-      if (location.port) {
-        socketOptions.port = location.port;
-      }
       ReactDOM.render(
         React.createElement(RemoteDevApp, {
-          socketOptions: socketOptions
+          socketOptions: window.remotedevOptions
         }),
         document.querySelector('#root')
       );

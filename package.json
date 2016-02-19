@@ -7,7 +7,8 @@
     "remotedev": "bin/remotedev.js"
   },
   "files": [
-    "bin"
+    "bin",
+    "views"
   ],
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
   },
   "homepage": "https://github.com/zalmoxisus/remotedev-server",
   "dependencies": {
+    "ejs": "^2.4.1",
     "express": "^4.13.3",
     "minimist": "^1.2.0",
     "socketcluster": "^4.3.1"
