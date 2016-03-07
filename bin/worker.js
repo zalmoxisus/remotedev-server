@@ -1,3 +1,4 @@
+var path = require('path');
 var express = require('express');
 
 module.exports.run = function(worker) {
@@ -6,10 +7,10 @@ module.exports.run = function(worker) {
   var scServer = worker.scServer;
 
   httpServer.on('request', app);
+
+  app.set('view engine', 'ejs');
   app.get('/', function(req, res) {
-    res.send('<html><body>' +
-      '<p>It works! Now point your app and monitor app to connect to this server.</p>' +
-      '</body></html>');
+    res.render('index', { port: worker.options.port });
   });
   app.post('/', function(req, res) {
     if (!req.body.data) return res.status(404).end();
