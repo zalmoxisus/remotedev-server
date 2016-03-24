@@ -1,8 +1,6 @@
-var path = require('path');
-var express = require('express');
+var app = require('express')();
 
 module.exports.run = function(worker) {
-  var app = require('express')();
   var httpServer = worker.httpServer;
   var scServer = worker.scServer;
 
