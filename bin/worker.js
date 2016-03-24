@@ -9,6 +9,8 @@ module.exports.run = function(worker) {
   httpServer.on('request', app);
 
   app.set('view engine', 'ejs');
+  app.set('views', path.resolve(__dirname, '..', 'views'));
+  
   app.get('/', function(req, res) {
     res.render('index', { port: worker.options.port });
   });
