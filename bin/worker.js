@@ -1,3 +1,4 @@
+var path = require('path');
 var app = require('express')();
 
 module.exports.run = function(worker) {
