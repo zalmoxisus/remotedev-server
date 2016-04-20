@@ -31,17 +31,25 @@ module.exports.run = function(worker) {
   });
 
   scServer.on('connection', function(socket) {
+    var channelToWatch, channelToEmit;
     socket.on('login', function (credentials, respond) {
-      var channelName = credentials === 'master' ? 'respond' : 'log';
+      if (credentials === 'master') {
+        channelToWatch = 'respond'; channelToEmit = 'log';
+      } else {
+        channelToWatch = 'log'; channelToEmit = 'respond';
+      }
       worker.exchange.subscribe('sc-' + socket.id).watch(function(msg) {
-        socket.emit(channelName, msg);
+        socket.emit(channelToWatch, msg);
       });
-      respond(null, channelName);
+      respond(null, channelToWatch);
     });
     socket.on('disconnect', function() {
       var channel = worker.exchange.channel('sc-' + socket.id);
       channel.unsubscribe(); channel.destroy();
-      scServer.exchange.publish('log', { id: socket.id, type: 'DISCONNECTED' });
+      scServer.exchange.publish(
+        channelToEmit,
+        { id: socket.id, type: 'DISCONNECTED' }
+      );
     });
   });
 };
