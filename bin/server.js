@@ -5,6 +5,12 @@ module.exports = function(argv) {
     host: argv.hostname || null,
     port: Number(argv.port) || 8000,
     workerController: __dirname + '/worker.js',
-    allowClientPublish: false
+    allowClientPublish: false,
+    protocol: argv.protocol || 'http',
+    protocolOptions: !(argv.protocol === 'https') ? null : {
+      key: argv.key || null,
+      cert: argv.cert || null,
+      passphrase: argv.passphrase || null
+    }
   });
 };
