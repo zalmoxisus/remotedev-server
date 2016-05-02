@@ -1,5 +1,7 @@
 var path = require('path');
 var app = require('express')();
+var bodyParser = require('body-parser');
+var cors = require('cors');
 
 module.exports.run = function(worker) {
   var httpServer = worker.httpServer;
@@ -13,9 +15,12 @@ module.exports.run = function(worker) {
   app.get('/', function(req, res) {
     res.render('index', { port: worker.options.port });
   });
+
+  app.use(cors({ methods: 'POST' }));
+  app.use(bodyParser.json());
   app.post('/', function(req, res) {
-    if (!req.body.data) return res.status(404).end();
-    scServer.exchange.publish('log', req.body.data);
+    if (!req.body) return res.status(404).end();
+    scServer.exchange.publish('log', req.body);
     res.send('OK');
   });
 
