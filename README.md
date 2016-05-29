@@ -36,7 +36,7 @@ So, you can start remotedev server together with your dev server.
 remotedev --hostname=localhost --port=8000
 ```
 
-Change `hostaname` and `port` to the values you want.
+Change `hostname` and `port` to the values you want.
 
 ### Connect from Android device or emulator
 
