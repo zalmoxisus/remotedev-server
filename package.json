@@ -30,8 +30,10 @@
     "cors": "^2.7.1",
     "ejs": "^2.4.1",
     "express": "^4.13.3",
+    "getport": "^0.1.0",
     "minimist": "^1.2.0",
     "object-assign": "^4.1.0",
+    "repeat-string": "^1.5.4",
     "socketcluster": "^4.3.1"
   }
 }
