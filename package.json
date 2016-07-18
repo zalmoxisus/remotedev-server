@@ -30,6 +30,7 @@
     "ejs": "^2.4.1",
     "express": "^4.13.3",
     "minimist": "^1.2.0",
+    "object-assign": "^4.1.0",
     "socketcluster": "^4.3.1"
   }
 }
