@@ -15,10 +15,10 @@ module.exports = function(argv) {
     getPort(port, function(err, p) {
       if (err) return console.error(err);
       if (port !== p) {
-        console.log('[RemoveDev] Server port ' + port + ' is already used.');
+        console.log('[RemoteDev] Server port ' + port + ' is already used.');
         resolve({ portAlreadyUsed: true, on: function(status, cb) { cb(); } });
       } else {
-        console.log('[RemoveDev] Start server...');
+        console.log('[RemoteDev] Start server...');
         console.log(repeat('-', 80) + '\n');
         resolve(new SocketCluster(options));
       }
