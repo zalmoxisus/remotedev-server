@@ -19,7 +19,7 @@ function log(pass, msg) {
   var prefix = pass ? chalk.green.bgBlack('PASS') : chalk.red.bgBlack('FAIL');
   var color = pass ? chalk.blue : chalk.red;
   console.log(prefix, color(msg));
-};
+}
 
 function getModuleName(type) {
   switch (type) {
