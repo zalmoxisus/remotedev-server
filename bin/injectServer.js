@@ -1,19 +1,53 @@
 var fs = require('fs');
 var path = require('path');
+var semver = require('semver');
 
 var name = 'remotedev-server';
 var startFlag = '/* ' + name + ' start */';
 var endFlag = '/* ' + name + ' end */';
-var serverFlag = '    _server(argv, config, resolve, reject);';
+var serverFlags = {
+  'react-native': {
+    '0.0.1': '    _server(argv, config, resolve, reject);',
+    '0.31.0': "  runServer(args, config, () => console.log('\\nReact packager ready.\\n'));",
+  },
+  'react-native-desktop': {
+    '0.0.1': '    _server(argv, config, resolve, reject);',
+  },
+};
+
+function getModuleVersion(modulePath) {
+  return JSON.parse(
+    fs.readFileSync(
+      path.join(modulePath, 'package.json'),
+      'utf-8'
+    )
+  ).version;
+}
+
+function getServerFlag(moduleName, version) {
+  var flags = serverFlags[moduleName || 'react-native'];
+  var versions = Object.keys(flags);
+  var flag;
+  for (var i = 0; i < versions.length; i++) {
+    if (semver.gt(version, versions[i])) {
+      flag = flags[versions[i]];
+    }
+  }
+  return flag;
+}
 
 exports.dir = 'local-cli/server';
 exports.file = 'server.js';
 exports.fullPath = path.join(exports.dir, exports.file);
 
-exports.inject = function(modulePath, options) {
+exports.inject = function(modulePath, options, moduleName) {
   var filePath = path.join(modulePath, exports.fullPath);
   if (!fs.existsSync(filePath)) return false;
 
+  var serverFlag = getServerFlag(
+    moduleName,
+    getModuleVersion(modulePath)
+  );
   var code = [
     startFlag,
     '    require("' + name + '")(' + JSON.stringify(options) + ')',
@@ -40,10 +74,14 @@ exports.inject = function(modulePath, options) {
   return true;
 };
 
-exports.revert = function(modulePath) {
+exports.revert = function(modulePath, moduleName) {
   var filePath = path.join(modulePath, exports.fullPath);
   if (!fs.existsSync(filePath)) return false;
 
+  var serverFlag = getServerFlag(
+    moduleName,
+    getModuleVersion(modulePath)
+  );
   var serverCode = fs.readFileSync(filePath, 'utf-8');
   var start = serverCode.indexOf(startFlag); // already injected ?
   var end = serverCode.indexOf(endFlag) + endFlag.length;
