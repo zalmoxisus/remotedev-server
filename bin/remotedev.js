@@ -31,13 +31,16 @@ function getModuleName(type) {
   }
 }
 
-function getModulePath(type) {
-  var moduleName = getModuleName(type);
+function getModulePath(moduleName) {
   return path.join(process.cwd(), 'node_modules', moduleName);
 }
 
 if (argv.revert) {
-  var pass = injectServer.revert(getModulePath(argv.revert));
+  var moduleName = getModuleName(argv.revert);
+  var pass = injectServer.revert(
+    getModulePath(moduleName),
+    moduleName
+  );
   var msg = 'Revert injection of RemoteDev server from React Native local server';
   log(pass, msg + (!pass ? ', the file `' + injectServer.fullPath + '` not found.' : '.'));
 
@@ -46,7 +49,12 @@ if (argv.revert) {
 
 if (argv.injectserver) {
   var options = getOptions(argv);
-  var pass = injectServer.inject(getModulePath(argv.injectserver), options);
+  var moduleName = getModuleName(argv.injectserver)
+  var pass = injectServer.inject(
+    getModulePath(moduleName),
+    options,
+    moduleName
+  );
   var msg = 'Inject RemoteDev server into React Native local server';
   log(pass, msg + (pass ? '.' : ', the file `' + injectServer.fullPath + '` not found.'));
 
