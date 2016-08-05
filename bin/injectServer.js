@@ -29,7 +29,7 @@ function getServerFlag(moduleName, version) {
   var versions = Object.keys(flags);
   var flag;
   for (var i = 0; i < versions.length; i++) {
-    if (semver.gt(version, versions[i])) {
+    if (semver.gte(version, versions[i])) {
       flag = flags[versions[i]];
     }
   }
