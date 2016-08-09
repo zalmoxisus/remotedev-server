@@ -7,6 +7,7 @@ module.exports = function getOptions(argv) {
       key: argv.key || process.env.npm_package_remotedev_key || null,
       cert: argv.cert || process.env.npm_package_remotedev_cert || null,
       passphrase: argv.passphrase || process.env.npm_package_remotedev_passphrase || null
-    }
+    },
+    logLevel: argv.logLevel
   };
 }
