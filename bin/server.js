@@ -16,7 +16,7 @@ module.exports = function(argv) {
     allowClientPublish: false
   });
   var port = options.port;
-  var logLevel = options.logLevel === undefined ? LOG_LEVEL.INFO : options.logLevel;
+  var logLevel = options.logLevel === undefined ? LOG_LEVEL_INFO : options.logLevel;
   return new Promise(function(resolve) {
     // Check port already used
     getPort(port, function(err, p) {
