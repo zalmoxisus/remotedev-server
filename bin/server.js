@@ -1,16 +1,27 @@
+var assign = require('object-assign');
+var repeat = require('repeat-string');
+var getOptions = require('./getOptions');
+var getPort = require('getport');
+
 module.exports = function(argv) {
   var SocketCluster = require('socketcluster').SocketCluster;
-
-  return new SocketCluster({
-    host: argv.hostname || process.env.npm_package_remotedev_hostname || null,
-    port: Number(argv.port || process.env.npm_package_remotedev_port) || 8000,
+  var options = assign(getOptions(argv), {
     workerController: __dirname + '/worker.js',
-    allowClientPublish: false,
-    protocol: argv.protocol || process.env.npm_package_remotedev_protocol || 'http',
-    protocolOptions: !(argv.protocol === 'https') ? null : {
-      key: argv.key || process.env.npm_package_remotedev_key || null,
-      cert: argv.cert || process.env.npm_package_remotedev_cert || null,
-      passphrase: argv.passphrase || process.env.npm_package_remotedev_passphrase || null
-    }
+    allowClientPublish: false
+  });
+  var port = options.port;
+  return new Promise(function(resolve) {
+    // Check port already used
+    getPort(port, function(err, p) {
+      if (err) return console.error(err);
+      if (port !== p) {
+        console.log('[RemoteDev] Server port ' + port + ' is already used.');
+        resolve({ portAlreadyUsed: true, on: function(status, cb) { cb(); } });
+      } else {
+        console.log('[RemoteDev] Start server...');
+        console.log(repeat('-', 80) + '\n');
+        resolve(new SocketCluster(options));
+      }
+    });
   });
 };
