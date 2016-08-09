@@ -8,6 +8,6 @@ module.exports = function getOptions(argv) {
       cert: argv.cert || process.env.npm_package_remotedev_cert || null,
       passphrase: argv.passphrase || process.env.npm_package_remotedev_passphrase || null
     },
-    logLevel: argv.logLevel
+    logLevel: argv.logLevel || 3
   };
 }
