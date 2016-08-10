@@ -23,6 +23,9 @@ function log(pass, msg) {
 
 function getModuleName(type) {
   switch (type) {
+    case 'macos':
+      return 'react-native-macos';
+    // react-native-macos is renamed from react-native-desktop
     case 'desktop':
       return 'react-native-desktop';
     case 'reactnative':
@@ -35,28 +38,34 @@ function getModulePath(moduleName) {
   return path.join(process.cwd(), 'node_modules', moduleName);
 }
 
+function getModule(type) {
+  var moduleName = getModuleName(type);
+  var modulePath = getModulePath(moduleName);
+  if (type === 'desktop' && !fs.existsSync(modulePath)) {
+    moduleName = getModuleName('macos');
+    modulePath = getModulePath(moduleName);
+  }
+  return {
+    name: moduleName,
+    path: modulePath
+  };
+}
+
 if (argv.revert) {
-  var moduleName = getModuleName(argv.revert);
-  var pass = injectServer.revert(
-    getModulePath(moduleName),
-    moduleName
-  );
+  var module = getModule(argv.revert);
+  var pass = injectServer.revert(module.path, module.name);
   var msg = 'Revert injection of RemoteDev server from React Native local server';
-  log(pass, msg + (!pass ? ', the file `' + injectServer.fullPath + '` not found.' : '.'));
+  log(pass, msg + (!pass ? ', the file `' + path.join(module.name, injectServer.fullPath) + '` not found.' : '.'));
 
   process.exit(pass ? 0 : 1);
 }
 
 if (argv.injectserver) {
   var options = getOptions(argv);
-  var moduleName = getModuleName(argv.injectserver)
-  var pass = injectServer.inject(
-    getModulePath(moduleName),
-    options,
-    moduleName
-  );
+  var module = getModule(argv.injectserver);
+  var pass = injectServer.inject(module.path, options, module.name);
   var msg = 'Inject RemoteDev server into React Native local server';
-  log(pass, msg + (pass ? '.' : ', the file `' + injectServer.fullPath + '` not found.'));
+  log(pass, msg + (pass ? '.' : ', the file `' + path.join(module.name, injectServer.fullPath) + '` not found.'));
 
   process.exit(pass ? 0 : 1);
 }

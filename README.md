@@ -48,7 +48,7 @@ Change `hostname` and `port` to the values you want.
 }
 ```
 
-The `injectserver` value can be `reactnative` or `desktop` ([react-native-desktop](https://github.com/ptmt/react-native-desktop)), it used `reactnative` by default.
+The `injectserver` value can be `reactnative` or `macos` ([react-native-macos](https://github.com/ptmt/react-native-macos)), it used `reactnative` by default.
 
 Then, we can start React Native server and RemoteDev server with one command:
 
