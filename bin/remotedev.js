@@ -4,7 +4,7 @@ var path = require('path');
 var argv = require('minimist')(process.argv.slice(2));
 var chalk = require('chalk');
 var injectServer = require('./injectServer');
-var getOptions = require('./../lib/getOptions');
+var getOptions = require('./../lib/options');
 
 function readFile(filePath) {
   return fs.readFileSync(path.resolve(process.cwd(), filePath), 'utf-8');

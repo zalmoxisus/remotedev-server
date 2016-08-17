@@ -1,6 +1,6 @@
 var assign = require('object-assign');
 var repeat = require('repeat-string');
-var getOptions = require('./../lib/getOptions');
+var getOptions = require('./../lib/options');
 var getPort = require('getport');
 
 var LOG_LEVEL_NONE = 0;
