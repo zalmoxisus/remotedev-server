@@ -1,8 +1,7 @@
 var assign = require('object-assign');
 var repeat = require('repeat-string');
-var getOptions = require('./getOptions');
+var getOptions = require('./../lib/getOptions');
 var getPort = require('getport');
-
 
 var LOG_LEVEL_NONE = 0;
 var LOG_LEVEL_ERROR = 1;
@@ -12,7 +11,7 @@ var LOG_LEVEL_INFO = 3;
 module.exports = function(argv) {
   var SocketCluster = require('socketcluster').SocketCluster;
   var options = assign(getOptions(argv), {
-    workerController: __dirname + '/worker.js',
+    workerController: __dirname + '/../lib/worker.js',
     allowClientPublish: false
   });
   var port = options.port;

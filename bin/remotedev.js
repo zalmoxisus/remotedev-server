@@ -3,8 +3,8 @@ var fs = require('fs');
 var path = require('path');
 var argv = require('minimist')(process.argv.slice(2));
 var chalk = require('chalk');
-var getOptions = require('./getOptions');
 var injectServer = require('./injectServer');
+var getOptions = require('./../lib/getOptions');
 
 function readFile(filePath) {
   return fs.readFileSync(path.resolve(process.cwd(), filePath), 'utf-8');

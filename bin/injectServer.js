@@ -8,11 +8,11 @@ var endFlag = '/* ' + name + ' end */';
 var serverFlags = {
   'react-native': {
     '0.0.1': '    _server(argv, config, resolve, reject);',
-    '0.31.0': "  runServer(args, config, () => console.log('\\nReact packager ready.\\n'));",
+    '0.31.0': "  runServer(args, config, () => console.log('\\nReact packager ready.\\n'));"
   },
   'react-native-desktop': {
-    '0.0.1': '    _server(argv, config, resolve, reject);',
-  },
+    '0.0.1': '    _server(argv, config, resolve, reject);'
+  }
 };
 
 function getModuleVersion(modulePath) {
