@@ -1,7 +1,7 @@
 RemoteDev Server
 ================
 
-Bridge for connecting [remotedev monitor app](https://github.com/zalmoxisus/remotedev-app) with [Remote Redux DevTools](https://github.com/zalmoxisus/remote-redux-devtools) or [RemoteDev](https://github.com/zalmoxisus/remotedev) using a local server. Running a local server is optional, you may use [remotedev.io](remotedev.io) server instead, which is by default.
+Bridge for connecting [remotedev monitor app](https://github.com/zalmoxisus/remotedev-app) with [Remote Redux DevTools](https://github.com/zalmoxisus/remote-redux-devtools) or [RemoteDev](https://github.com/zalmoxisus/remotedev) using a local server. Running a local server is optional, you may use [remotedev.io](https://remotedev.io) server instead, which is by default.
 
 ### Installation
 
