@@ -9,6 +9,8 @@ Bridge for communicating with an application remotely via [Redux DevTools extens
 npm install --save-dev remotedev-server
 ```
 
+Also [there's a docker image](https://github.com/jhen0409/docker-remotedev-server) you can use.
+
 ### Usage
 
 ##### Add in your app's `package.json`:
@@ -98,6 +100,8 @@ Remotedev server is database agnostic. By default everything is stored in the me
 | RethinkDB | rethinkdb | `{ host: '123.456.68.987', db: 'my_db' }`                                                                              | `npm install --save rethinkdbdash js-data-rethinkdb` |
 | SQLite3   | sql       | `{ client: 'sqlite3', connection: { host: '123.45.67.890', user: 'ubuntu', password: 'welcome1234', database: 'db1' }` | `npm install --save js-data-sql`                     |
 
-### License
+Implement a [custom adapter for JSData](http://www.js-data.io/docs/working-with-adapters#custom-adapters).
+
+### License 
 
 MIT
