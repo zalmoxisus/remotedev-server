@@ -1,6 +1,6 @@
 {
   "name": "remotedev-server",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Run the RemoteDev monitor on your local server.",
   "main": "index.js",
   "bin": {
