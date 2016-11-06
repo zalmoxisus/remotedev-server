@@ -70,4 +70,4 @@ if (argv.injectserver) {
   process.exit(pass ? 0 : 1);
 }
 
-require('./server')(argv);
+require('../index')(argv);
