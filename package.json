@@ -38,6 +38,7 @@
     "knex": "^0.12.6",
     "lodash": "^4.15.0",
     "minimist": "^1.2.0",
+    "morgan": "^1.7.0",
     "node-uuid": "^1.4.0",
     "object-assign": "^4.0.0",
     "repeat-string": "^1.5.4",
