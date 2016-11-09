@@ -3,3 +3,4 @@ node_modules
 .DS_Store
 coverage
 .idea
+remotedev-db.sqlite3
