@@ -21,6 +21,9 @@
     "devtools",
     "remotedev"
   ],
+  "engines" : {
+    "node" : ">=4.0.0"
+  },
   "author": "Mihail Diordiev <zalmoxisus@gmail.com> (https://github.com/zalmoxisus)",
   "license": "MIT",
   "bugs": {
@@ -43,7 +46,6 @@
     "minimist": "^1.2.0",
     "morgan": "^1.7.0",
     "node-uuid": "^1.4.0",
-    "object-assign": "^4.0.0",
     "repeat-string": "^1.5.4",
     "semver": "^5.3.0",
     "socketcluster": "^5.0.4",
