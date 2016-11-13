@@ -32,7 +32,7 @@ module.exports = function(argv) {
       } else {
         if (logLevel >= LOG_LEVEL_INFO) {
           console.log('[RemoteDev] Start server...');
-          console.log(repeat('-', 80) + '\n');
+          console.log('-'.repeat(80) + '\n');
         }
         resolve(new SocketCluster(options));
       }
