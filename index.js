@@ -1,4 +1,3 @@
-var repeat = require('repeat-string');
 var getPort = require('getport');
 var getOptions = require('./lib/options');
 
