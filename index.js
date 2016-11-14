@@ -1,5 +1,3 @@
-var assign = require('object-assign');
-var repeat = require('repeat-string');
 var getPort = require('getport');
 var getOptions = require('./lib/options');
 
@@ -10,7 +8,7 @@ var LOG_LEVEL_INFO = 3;
 
 module.exports = function(argv) {
   var SocketCluster = require('socketcluster').SocketCluster;
-  var options = assign(getOptions(argv), {
+  var options = Object.assign(getOptions(argv), {
     workerController: __dirname + '/lib/worker.js',
     allowClientPublish: false
   });
@@ -33,7 +31,7 @@ module.exports = function(argv) {
       } else {
         if (logLevel >= LOG_LEVEL_INFO) {
           console.log('[RemoteDev] Start server...');
-          console.log(repeat('-', 80) + '\n');
+          console.log('-'.repeat(80) + '\n');
         }
         resolve(new SocketCluster(options));
       }
