@@ -15,11 +15,11 @@ type Report {
   title: String,
   # Details supplied by the user
   description: String,
-  # The last dispatched action before the report was sent 
+  # The last dispatched action before the report was sent
   action: String,
-  # Stringified actions or the state or both, which should be loaded inti the application to reproduce the exact behavior
+  # Stringified actions or the state or both, which should be loaded the application to reproduce the exact behavior
   payload: String,
-  # Stringified preloaded state object. Could be the innitial state of teh app or commited state (after dispatching COMMIT action or reaching maxAge)
+  # Stringified preloaded state object. Could be the initial state of the app or committed state (after dispatching COMMIT action or reaching maxAge)
   preloadedState: String,
   # Screenshot url or blob as a string
   screenshot: String,
@@ -29,7 +29,7 @@ type Report {
   version: String,
   # Used to identify the user who sent the report
   userId: String,
-  # More detailed data about the user, usually it's a stringified object 
+  # More detailed data about the user, usually it's a stringified object
   user: String,
   # Everything else you want to send
   meta: String,
