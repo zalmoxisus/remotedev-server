@@ -46,7 +46,7 @@
     "graphql": "^0.8.0",
     "graphql-tools": "^0.8.1",
     "js-data": "^2.9.0",
-    "knex": "^0.12.6",
+    "knex": "0.11.10",
     "lodash": "^4.15.0",
     "minimist": "^1.2.0",
     "morgan": "^1.7.0",
