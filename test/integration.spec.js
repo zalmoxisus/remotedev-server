@@ -107,4 +107,61 @@ describe('Server', function() {
       });
     });
   });
+
+  describe('REST backend', function() {
+    var id;
+    var report = {
+      type: 'ACTIONS',
+      title: 'Test report',
+      description: 'Test body report',
+      action: 'SOME_FINAL_ACTION',
+      payload: '[{"type":"ADD_TODO","text":"hi"},{"type":"SOME_FINAL_ACTION"}]',
+      preloadedState: '{"todos":[{"text":"Use Redux","completed":false,"id":0}]}',
+      userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36'
+    };
+    it('should add a report', function(done) {
+      request('http://localhost:8000')
+        .post('/')
+        .send(report)
+        .set('Accept', 'application/json')
+        .expect('Content-Type', /application\/json/)
+        .expect(function(res) {
+          id = res.body.id;
+          expect(id).toExist();
+        })
+        .expect(200, done);
+    });
+
+    it('should get the report', function(done) {
+      request('http://localhost:8000')
+        .post('/')
+        .send({
+          op: 'get',
+          id: id
+        })
+        .set('Accept', 'application/json')
+        .expect('Content-Type', /application\/json/)
+        .expect(function(res) {
+          expect(res.body).toInclude(report);
+        })
+        .expect(200, done);
+    });
+
+    it('should list reports', function(done) {
+      request('http://localhost:8000')
+        .post('/')
+        .send({
+          op: 'list'
+        })
+        .set('Accept', 'application/json')
+        .expect('Content-Type', /application\/json/)
+        .expect(function(res) {
+          expect(res.body.length).toBe(1);
+          expect(res.body[0].id).toBe(id);
+          expect(res.body[0].title).toBe('Test report');
+          expect(res.body[0].added).toExist();
+        })
+        .expect(200, done);
+    });
+  });
 });
