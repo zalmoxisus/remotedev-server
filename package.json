@@ -58,6 +58,7 @@
   "devDependencies": {
     "expect": "^1.20.2",
     "mocha": "^3.2.0",
+    "socketcluster-client": "^5.1.1",
     "supertest": "^2.0.1"
   }
 }
