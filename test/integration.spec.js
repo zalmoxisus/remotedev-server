@@ -164,4 +164,24 @@ describe('Server', function() {
         .expect(200, done);
     });
   });
+
+  describe('GraphQL backend', function() {
+    it('should get the report', function(done) {
+      request('http://localhost:8000')
+        .post('/graphql')
+        .send({
+          query: '{ reports { id, type, title } }'
+        })
+        .set('Accept', 'application/json')
+        .expect('Content-Type', /application\/json/)
+        .expect(function(res) {
+          var reports = res.body.data.reports;
+          expect(reports.length).toBe(1);
+          expect(reports[0].id).toExist();
+          expect(reports[0].title).toBe('Test report');
+          expect(reports[0].type).toBe('ACTIONS');
+        })
+        .expect(200, done);
+    });
+  });
 });
