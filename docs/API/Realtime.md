@@ -149,5 +149,5 @@ function handleMessages(message) {
 ```py
 def handleMessages(key, message):
   if message.type === "DISPATCH" and message.payload.type === "JUMP_TO_STATE":
-    store.setState(json.dumps(message.state));
+    store.setState(json.loads(message.state));
 ```
