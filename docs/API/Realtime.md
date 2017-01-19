@@ -2,7 +2,7 @@
 
 ### WebSocket Clients
 
-We're using [SocketCluster](http://socketcluster.io/) for realtime communication, which provides a fast and scalable webSocket layer (via [`µWS`](https://github.com/uWebSockets/uWebSockets)) and a minimal pub/sub system. You need to include one of [its clients](https://github.com/SocketCluster/client-drivers) in your app to communicate with RemotedevServer. Currently there are clients for [JavaScript (NodeJS)](https://github.com/SocketCluster/socketcluster-client), [Java](https://github.com/sacOO7/socketcluster-client-java), [Python](https://github.com/sacOO7/socketcluster-client-python) and [Objective-C](https://github.com/abpopov/SocketCluster-ios-client).
+We're using [SocketCluster](http://socketcluster.io/) for realtime communication, which provides a fast and scalable webSocket layer (via [`µWS`](https://github.com/uWebSockets/uWebSockets)) and a minimal pub/sub system. You need to include one of [its clients](https://github.com/SocketCluster/client-drivers) in your app to communicate with RemotedevServer. Currently there are clients for [JavaScript (NodeJS)](https://github.com/SocketCluster/socketcluster-client), [Java](https://github.com/sacOO7/socketcluster-client-java), [Python](https://github.com/sacOO7/socketcluster-client-python), [C](https://github.com/sacOO7/socketcluster-client-C), [Objective-C](https://github.com/abpopov/SocketCluster-ios-client) and [.NET/C#](https://github.com/sacOO7/SocketclusterClientDotNet).
 
 By default, the websocket server is running on `ws://localhost:8000/socketcluster/`.  
 
