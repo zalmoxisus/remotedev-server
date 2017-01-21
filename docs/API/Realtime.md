@@ -26,6 +26,8 @@ socket = Socketcluster.socket("ws://localhost:8000/socketcluster/")
 socket.connect()
 ```
 
+> Note that JavaScript client composes the url from `hostname` and `port`, adding `/socketcluster/` path automatically. For other clients, you should specify that path. For example, for `ObjectiveC` it would be `self.client.initWithHost("localhost/socketcluster/", onPort: 8000, securely: false)`.
+
 #### 2. Disconnecting and reconnecting
  
 SocketCluster client handles reconnecting for you, but you still might want to know when the connection is established, or when it failed to connect.
