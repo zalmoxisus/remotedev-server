@@ -19,15 +19,14 @@ describe('Server', function() {
   });
 
   describe('Express backend', function() {
-    it('loads main page', function(done) {
+    it('loads main page', function() {
       request('http://localhost:8000')
         .get('/')
         .expect('Content-Type', /text\/html/)
         .expect(200)
-        .expect(function(res) {
+        .then(function(res) {
           expect(res.text).toMatch(/<title>RemoteDev<\/title>/);
         })
-        .end(done);
     });
 
     it('resolves an inexistent url', function(done) {
@@ -119,20 +118,20 @@ describe('Server', function() {
       preloadedState: '{"todos":[{"text":"Use Redux","completed":false,"id":0}]}',
       userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36'
     };
-    it('should add a report', function(done) {
+    it('should add a report', function() {
       request('http://localhost:8000')
         .post('/')
         .send(report)
         .set('Accept', 'application/json')
         .expect('Content-Type', /application\/json/)
-        .expect(function(res) {
+        .expect(200)
+        .then(function(res) {
           id = res.body.id;
           expect(id).toExist();
-        })
-        .expect(200, done);
+        });
     });
 
-    it('should get the report', function(done) {
+    it('should get the report', function() {
       request('http://localhost:8000')
         .post('/')
         .send({
@@ -141,13 +140,13 @@ describe('Server', function() {
         })
         .set('Accept', 'application/json')
         .expect('Content-Type', /application\/json/)
-        .expect(function(res) {
+        .expect(200)
+        .then(function(res) {
           expect(res.body).toInclude(report);
-        })
-        .expect(200, done);
+        });
     });
 
-    it('should list reports', function(done) {
+    it('should list reports', function() {
       request('http://localhost:8000')
         .post('/')
         .send({
@@ -155,18 +154,18 @@ describe('Server', function() {
         })
         .set('Accept', 'application/json')
         .expect('Content-Type', /application\/json/)
-        .expect(function(res) {
+        .expect(200)
+        .then(function(res) {
           expect(res.body.length).toBe(1);
           expect(res.body[0].id).toBe(id);
           expect(res.body[0].title).toBe('Test report');
           expect(res.body[0].added).toExist();
-        })
-        .expect(200, done);
+        });
     });
   });
 
   describe('GraphQL backend', function() {
-    it('should get the report', function(done) {
+    it('should get the report', function() {
       request('http://localhost:8000')
         .post('/graphql')
         .send({
@@ -174,14 +173,14 @@ describe('Server', function() {
         })
         .set('Accept', 'application/json')
         .expect('Content-Type', /application\/json/)
-        .expect(function(res) {
+        .expect(200)
+        .then(function(res) {
           var reports = res.body.data.reports;
           expect(reports.length).toBe(1);
           expect(reports[0].id).toExist();
           expect(reports[0].title).toBe('Test report');
           expect(reports[0].type).toBe('ACTIONS');
-        })
-        .expect(200, done);
+        });
     });
   });
 });
