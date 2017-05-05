@@ -39,6 +39,6 @@
     "object-assign": "^4.0.0",
     "repeat-string": "^1.5.4",
     "semver": "^5.3.0",
-    "socketcluster": "^5.0.4"
+    "socketcluster": "^5.9.1"
   }
 }
