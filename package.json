@@ -38,7 +38,7 @@
     "object-assign": "^4.0.0",
     "repeat-string": "^1.5.4",
     "semver": "^5.3.0",
-    "socketcluster": "^8.0.0",
+    "socketcluster": "^14.3.2",
     "uuid": "^3.2.1"
   }
 }

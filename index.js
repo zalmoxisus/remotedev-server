@@ -9,7 +9,7 @@ var LOG_LEVEL_WARN = 2;
 var LOG_LEVEL_INFO = 3;
 
 module.exports = function(argv) {
-  var SocketCluster = require('socketcluster').SocketCluster;
+  var SocketCluster = require('socketcluster');
   var options = assign(getOptions(argv), {
     workerController: __dirname + '/lib/worker.js',
     allowClientPublish: false
