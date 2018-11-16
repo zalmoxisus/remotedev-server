@@ -44,6 +44,22 @@ Set `hostname` and `port` to the values you want. `hostname` by default is `loca
 
 To use WSS, set `protocol` argument to `https` and provide `key`, `cert` and `passphrase` arguments.
 
+
+#### Available options
+
+| Console argument | description                                                                                                                                             | default value |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `--hostname`     | hostname                                                                                                                                                | localhost     |
+| `--port`         | port                                                                                                                                                    | 8000          |
+| `--protocol`     | protocol                                                                                                                                                | http          |
+| `--key`          | the key file for [running an https server](https://github.com/SocketCluster/socketcluster#using-over-https) (`--protocol` must be set to 'https')       | -             |
+| `--cert`         | the cert file for [running an https server](https://github.com/SocketCluster/socketcluster#using-over-https) (`--protocol` must be set to 'https')      | -             |
+| `--passphrase`   | the key passphrase for [running an https server](https://github.com/SocketCluster/socketcluster#using-over-https) (`--protocol` must be set to 'https') | -             |
+| `--adapter`      | the [database adapter](https://github.com/zalmoxisus/remotedev-server#save-reports-and-logs) name                                                       | -             |
+| `--dbOptions`    | the [database adapter](https://github.com/zalmoxisus/remotedev-server#save-reports-and-logs) options string to pass                                     | -             |
+| `--logLevel`     | the socket server log level - 0=none, 1=error, 2=warn, 3=info                                                                                           | 3             |
+| `--wsEngine`     | the socket server web socket engine - ws or uws                                                                                                         | uws           |
+
 ### Inject to React Native local server
 
 ##### Add in your React Native app's `package.json`:
@@ -89,7 +105,7 @@ You can store reports via [`redux-remotedev`](https://github.com/zalmoxisus/redu
 Remotedev server is database agnostic. By default everything is stored in the memory, but you can persist data by specifying one of the jsData adapters above for `adapter` argument. Also you can add an `dbOptions` argument for database configuration. If not provided the default options will be used (for some adapters, like `sql`, it's required). You have to install the required adapter's npm package.
 
 | Storage   | `adapter` | `dbOptions` argument example (optional)                                                                                | install                                              |
-|-----------|-----------|------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------|
+| --------- | --------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
 | Firebase  | firebase  | `{ basePath: 'https://my-app.firebase.io' }`                                                                           | `npm install --save js-data-firebase`                |
 | HTTP      | http      | `{ basePath: 'https://my-rest-server/api' }`                                                                           | `npm install --save js-data-http`                    |
 | LevelUp   | levelup   | `'./db'` (the levelup "db" object will be available at "adapter.db")                                                   | `npm install --save js-data-levelup`                 |
