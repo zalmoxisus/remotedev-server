@@ -10,7 +10,8 @@ var serverFlags = {
     '0.0.1': '    _server(argv, config, resolve, reject);',
     '0.31.0': "  runServer(args, config, () => console.log('\\nReact packager ready.\\n'));",
     '0.44.0-rc.0': '  runServer(args, config, startedCallback, readyCallback);',
-    '0.46.0-rc.0': '  runServer(runServerArgs, configT, startedCallback, readyCallback);'
+    '0.46.0-rc.0': '  runServer(runServerArgs, configT, startedCallback, readyCallback);',
+    '0.57.0': '  runServer(args, configT);'
   },
   'react-native-desktop': {
     '0.0.1': '    _server(argv, config, resolve, reject);'
