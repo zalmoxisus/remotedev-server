@@ -46,13 +46,13 @@
     "graphql-server-express": "^1.0.0",
     "graphql-tools": "^1.1.0",
     "js-data": "^2.9.0",
-    "knex": "0.11.10",
+    "knex": "^0.15.2",
     "lodash": "^4.15.0",
     "minimist": "^1.2.0",
     "morgan": "^1.7.0",
     "semver": "^5.3.0",
     "socketcluster": "^14.3.3",
-    "sqlite3": "^3.1.8",
+    "sqlite3": "^4.0.4",
     "uuid": "^3.0.1"
   },
   "devDependencies": {
