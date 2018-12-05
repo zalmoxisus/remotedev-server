@@ -100,23 +100,17 @@ If you're still use Android 4.0, you should use `10.0.2.2` (Genymotion: `10.0.3.
 
 ### Save reports and logs
 
-You can store reports via [`redux-remotedev`](https://github.com/zalmoxisus/redux-remotedev) and get them replicated with [Redux DevTools extension](https://github.com/zalmoxisus/redux-devtools-extension) or [Remote Redux DevTools](https://github.com/zalmoxisus/remote-redux-devtools). You can get action history right in the extension just by clicking the link from a report.
+You can store reports via [`redux-remotedev`](https://github.com/zalmoxisus/redux-remotedev) and get them replicated with [Redux DevTools extension](https://github.com/zalmoxisus/redux-devtools-extension) or [Remote Redux DevTools](https://github.com/zalmoxisus/remote-redux-devtools). You can get action history right in the extension just by clicking the link from a report. Open `http://localhost:8000/graphiql` (assuming you're using `localhost` as host and `8000`) to explore in GraphQL. Reports are posted to `http://localhost:8000/`. See examples in [tests](https://github.com/zalmoxisus/remotedev-server/blob/937cfa1f0ac9dc12ebf7068eeaa8b03022ec33bc/test/integration.spec.js#L110-L165).
 
-Remotedev server is database agnostic. By default everything is stored in the memory, but you can persist data by specifying one of the jsData adapters above for `adapter` argument. Also you can add an `dbOptions` argument for database configuration. If not provided the default options will be used (for some adapters, like `sql`, it's required). You have to install the required adapter's npm package.
-
-| Storage   | `adapter` | `dbOptions` argument example (optional)                                                                                | install                                              |
-| --------- | --------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| Firebase  | firebase  | `{ basePath: 'https://my-app.firebase.io' }`                                                                           | `npm install --save js-data-firebase`                |
-| HTTP      | http      | `{ basePath: 'https://my-rest-server/api' }`                                                                           | `npm install --save js-data-http`                    |
-| LevelUp   | levelup   | `'./db'` (the levelup "db" object will be available at "adapter.db")                                                   | `npm install --save js-data-levelup`                 |
-| MongoDB   | mongodb   | `{ name: 'user', idAttribute: '_id', table: 'users' }`                                                                 | `npm install --save js-data-mongodb`                 |
-| MySQL     | sql       | `{ client: 'mysql', connection: { host: '123.45.67.890', user: 'ubuntu', password: 'welcome1234', database: 'db1' }`   | `npm install --save js-data-sql`                     |
-| Postgres  | sql       | `{ client: 'pg', connection: { host: '123.45.67.890', user: 'ubuntu', password: 'welcome1234', database: 'db1' }`      | `npm install --save js-data-sql`                     |
-| Redis     | redis     | See the configurable options for [`node_redis`](https://github.com/NodeRedis/node_redis)                               | `npm install --save js-data-redis`                   |
-| RethinkDB | rethinkdb | `{ host: '123.456.68.987', db: 'my_db' }`                                                                              | `npm install --save rethinkdbdash js-data-rethinkdb` |
-| SQLite3   | sql       | `{ client: 'sqlite3', connection: { host: '123.45.67.890', user: 'ubuntu', password: 'welcome1234', database: 'db1' }` | `npm install --save js-data-sql`                     |
-
-Implement a [custom adapter for JSData](http://www.js-data.io/docs/working-with-adapters#custom-adapters).
+Remotedev server is database agnostic using `knex` schema. By default everything is stored in the memory using sqlite database. See [`defaultDbOptions.json`](https://github.com/zalmoxisus/remotedev-server/blob/master/defaultDbOptions.json) for example of sqlite. You can replace `"connection": { "filename": ":memory:" },` with your file name (instead of `:memory:`) to persist teh database. Here's an example for PostgreSQL:
+```
+{
+  "client": "pg",
+  "connection": { "user": "myuser", "password": "mypassword", "database": "mydb" },
+  "debug": false,
+  "migrate": true
+}
+```
 
 ### License 
 

@@ -1,6 +1,0 @@
-{
-  "client": "pg",
-  "connection": { "user": "spekin", "password": "spekin", "database": "spek" },
-  "debug": false,
-  "migrate": true
-}
