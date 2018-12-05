@@ -55,10 +55,9 @@ To use WSS, set `protocol` argument to `https` and provide `key`, `cert` and `pa
 | `--key`          | the key file for [running an https server](https://github.com/SocketCluster/socketcluster#using-over-https) (`--protocol` must be set to 'https')       | -             |
 | `--cert`         | the cert file for [running an https server](https://github.com/SocketCluster/socketcluster#using-over-https) (`--protocol` must be set to 'https')      | -             |
 | `--passphrase`   | the key passphrase for [running an https server](https://github.com/SocketCluster/socketcluster#using-over-https) (`--protocol` must be set to 'https') | -             |
-| `--adapter`      | the [database adapter](https://github.com/zalmoxisus/remotedev-server#save-reports-and-logs) name                                                       | -             |
-| `--dbOptions`    | the [database adapter](https://github.com/zalmoxisus/remotedev-server#save-reports-and-logs) options string to pass                                     | -             |
+| `--dbOptions`    | database configuration, can be whether an object or a path (string) to json configuration file (by default it uses our ./defaultDbOptions.json file. Set `migrate` key to `true` to use our migrations file. [More details bellow](https://github.com/zalmoxisus/remotedev-server#save-reports-and-logs).                                   | -             |
 | `--logLevel`     | the socket server log level - 0=none, 1=error, 2=warn, 3=info                                                                                           | 3             |
-| `--wsEngine`     | the socket server web socket engine - ws or uws                                                                                                         | uws           |
+| `--wsEngine`     | the socket server web socket engine - ws or uws (sc-uws)                                                                                                    | ws            |
 
 ### Inject to React Native local server
 
@@ -111,6 +110,9 @@ Remotedev server is database agnostic using `knex` schema. By default everything
   "migrate": true
 }
 ```
+
+### Advanced
+- [Writing your integration for a native application](https://github.com/zalmoxisus/remotedev-server/blob/master/docs/API/Realtime.md)
 
 ### License 
 
