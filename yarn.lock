@@ -1537,11 +1537,6 @@ iterall@^1.1.0:
   resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.2.2.tgz#92d70deb8028e0c39ff3164fdbf4d8b088130cd7"
   integrity sha512-yynBb1g+RFUPY64fTrFv7nsjRrENBQJaX2UL+2Szc9REFrSNm1rpSXHGzhmAy7a9uv3vlvgBlXnf9RqmPH1/DA==
 
-js-data@^2.9.0:
-  version "2.10.1"
-  resolved "https://registry.yarnpkg.com/js-data/-/js-data-2.10.1.tgz#6b109ea588255768b21864b7a954b39086e3701d"
-  integrity sha512-rR+ijfHD/esOVgJsafvELHvdoQKUbQaojVM+w3DmIeq7Hc7QZZp0CeF+jhKXbHWdHJFWTNNRza1Kp4AzKnEaTg==
-
 jsbn@~0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
