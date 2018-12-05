@@ -1,6 +1,6 @@
 {
   "name": "remotedev-server",
-  "version": "0.2.7",
+  "version": "0.3.0-beta-10",
   "description": "Run the RemoteDev monitor on your local server.",
   "main": "index.js",
   "bin": {
@@ -9,8 +9,15 @@
   "files": [
     "bin",
     "lib",
-    "views"
+    "views",
+    "index.js",
+    "defaultDbOptions.json"
   ],
+  "scripts": {
+    "test": "NODE_ENV=test mocha --recursive",
+    "test:watch": "NODE_ENV=test mocha --recursive --watch",
+    "prepublish": "npm run test"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/zalmoxisus/remotedev-server.git"
@@ -19,6 +26,9 @@
     "devtools",
     "remotedev"
   ],
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "author": "Mihail Diordiev <zalmoxisus@gmail.com> (https://github.com/zalmoxisus)",
   "license": "MIT",
   "bugs": {
@@ -32,13 +42,22 @@
     "ejs": "^2.4.1",
     "express": "^4.13.3",
     "getport": "^0.1.0",
-    "js-data": "^2.9.0",
+    "graphql": "^0.13.0",
+    "graphql-server-express": "^1.4.0",
+    "graphql-tools": "^4.0.3",
+    "knex": "^0.15.2",
     "lodash": "^4.15.0",
     "minimist": "^1.2.0",
-    "object-assign": "^4.0.0",
-    "repeat-string": "^1.5.4",
+    "morgan": "^1.7.0",
     "semver": "^5.3.0",
-    "socketcluster": "^8.0.0",
-    "uuid": "^3.2.1"
+    "socketcluster": "^14.3.3",
+    "sqlite3": "^4.0.4",
+    "uuid": "^3.0.1"
+  },
+  "devDependencies": {
+    "expect": "^1.20.2",
+    "mocha": "^3.2.0",
+    "socketcluster-client": "^14.0.0",
+    "supertest": "^3.0.0"
   }
 }
