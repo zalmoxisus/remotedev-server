@@ -1,4 +1,5 @@
 var getPort = require('getport');
+var SocketCluster = require('socketcluster');
 var getOptions = require('./lib/options');
 
 var LOG_LEVEL_NONE = 0;
@@ -7,7 +8,6 @@ var LOG_LEVEL_WARN = 2;
 var LOG_LEVEL_INFO = 3;
 
 module.exports = function(argv) {
-  var SocketCluster = require('socketcluster').SocketCluster;
   var options = Object.assign(getOptions(argv), {
     workerController: __dirname + '/lib/worker.js',
     allowClientPublish: false
