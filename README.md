@@ -1,6 +1,8 @@
 RemoteDev Server
 ================
 
+>This package was renamed to [`redux-devtools-cli`](https://github.com/reduxjs/redux-devtools/tree/master/packages/redux-devtools-cli) and merged into [`redux-devtools` monorepo](https://github.com/reduxjs/redux-devtools). Please refer to that repository for the latest updates, issues and pull requests.
+
 Bridge for communicating with an application remotely via [Redux DevTools extension](https://github.com/zalmoxisus/redux-devtools-extension), [Remote Redux DevTools](https://github.com/zalmoxisus/remote-redux-devtools) or [RemoteDev](https://github.com/zalmoxisus/remotedev). Running your server is optional, you can use [remotedev.io](https://remotedev.io) instead.
 
 ### Installation
