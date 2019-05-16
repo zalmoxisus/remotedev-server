@@ -13,6 +13,9 @@ var serverFlags = {
     '0.46.0-rc.0': '  runServer(runServerArgs, configT, startedCallback, readyCallback);',
     '0.57.0': '  runServer(args, configT);'
   },
+  '@react-native-community/cli': {
+    '0.59.5': '  runServer(args, configT);'
+  },
   'react-native-desktop': {
     '0.0.1': '    _server(argv, config, resolve, reject);'
   }
@@ -39,7 +42,7 @@ function getServerFlag(moduleName, version) {
   return flag;
 }
 
-exports.dir = 'local-cli/server';
+exports.dir = 'build/commands/server';
 exports.file = 'server.js';
 exports.fullPath = path.join(exports.dir, exports.file);
 

@@ -30,7 +30,7 @@ function getModuleName(type) {
       return 'react-native-desktop';
     case 'reactnative':
     default:
-      return 'react-native';
+      return '@react-native-community/cli';
   }
 }
 
