@@ -11,7 +11,8 @@ var serverFlags = {
     '0.31.0': "  runServer(args, config, () => console.log('\\nReact packager ready.\\n'));",
     '0.44.0-rc.0': '  runServer(args, config, startedCallback, readyCallback);',
     '0.46.0-rc.0': '  runServer(runServerArgs, configT, startedCallback, readyCallback);',
-    '0.57.0': '  runServer(args, configT);'
+    '0.57.0': '  runServer(args, configT);',
+    '0.60.0': '  const serverInstance = await _metro().default.runServer(metroConfig, {'
   },
   'react-native-desktop': {
     '0.0.1': '    _server(argv, config, resolve, reject);'
@@ -39,8 +40,8 @@ function getServerFlag(moduleName, version) {
   return flag;
 }
 
-exports.dir = 'local-cli/server';
-exports.file = 'server.js';
+exports.dir = 'node_modules/@react-native-community/cli/build/commands/server';
+exports.file = 'runServer.js';
 exports.fullPath = path.join(exports.dir, exports.file);
 
 exports.inject = function(modulePath, options, moduleName) {
@@ -53,13 +54,14 @@ exports.inject = function(modulePath, options, moduleName) {
   );
   var code = [
     startFlag,
-    '    require("' + name + '")(' + JSON.stringify(options) + ')',
-    '      .then(_remotedev =>',
-    '        _remotedev.on("ready", () => {',
+    '    await require("' + name + '")(' + JSON.stringify(options) + ')',
+    '      .then(async(_remotedev) =>',
+    '        await _remotedev.on("ready", () => {',
     '          if (!_remotedev.portAlreadyUsed) console.log("-".repeat(80));',
-    '      ' + serverFlag,
     '        })',
     '      );',
+    '',
+    '      ' + serverFlag,
     endFlag,
   ].join('\n');
 
