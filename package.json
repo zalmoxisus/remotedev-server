@@ -45,7 +45,7 @@
     "graphql": "^0.13.0",
     "graphql-server-express": "^1.4.0",
     "graphql-tools": "^4.0.3",
-    "knex": "^0.15.2",
+    "knex": "^2.4.0",
     "lodash": "^4.15.0",
     "minimist": "^1.2.0",
     "morgan": "^1.7.0",
